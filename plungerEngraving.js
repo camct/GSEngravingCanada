@@ -28,6 +28,7 @@ Ecwid.OnAPILoaded.add(function() {
   
           // Base prices for products
           const BASE_PRICES = {800767786: 49.95}
+          const CORK_PRICE = 14;
           const CURRENT = {
             [OPTION_NAMES.GRIP_COLOR]: null,
             [OPTION_NAMES.ENGRAVING]: null,
