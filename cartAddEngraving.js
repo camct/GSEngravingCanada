@@ -240,8 +240,8 @@ Ecwid.OnAPILoaded.add(function() {
 
               // Check engraving length
               const totalEngravingLength = 
-                  (product.options[OPTION_NAMES.ENGRAVING_1]?.length || 0) + 
-                  (product.options[OPTION_NAMES.ENGRAVING_2]?.length || 0);
+                  (product.options[OPTION_NAMES.ENGRAVING_1]?.replace(/\s/g, '').length || 0) + 
+                  (product.options[OPTION_NAMES.ENGRAVING_2]?.replace(/\s/g, '').length || 0);
 
               console.log('Engraving validation:', {
                 length1: product.options[OPTION_NAMES.ENGRAVING_1]?.length || 0,
@@ -458,7 +458,7 @@ Ecwid.OnAPILoaded.add(function() {
                     console.log('Engraving 1 input changed:', engravingInput1.value);
                     const engravingText2 = engravingInput2 ? engravingInput2.value : '';
                     const engravingText1 = engravingInput1.value;
-                    const charCount = engravingText1.length + engravingText2.length;
+                    const charCount = engravingText1.replace(/\s/g, '').length + engravingText2.replace(/\s/g, '').length;
                     
                     if (charCount > 40) {
                         engravingInput1.value = engravingInput1.value.slice(0, -1);
@@ -496,7 +496,7 @@ Ecwid.OnAPILoaded.add(function() {
                 addListenerOnce('engraving2', engravingInput2, 'input', () => {
                     const engravingText1 = engravingInput1 ? engravingInput1.value : '';
                     const engravingText2 = engravingInput2.value;
-                    const charCount = engravingText1.length + engravingText2.length;
+                    const charCount = engravingText1.replace(/\s/g, '').length + engravingText2.replace(/\s/g, '').length;
                     
                     if (charCount > 40) {
                         engravingInput2.value = engravingInput2.value.slice(0, -1);
@@ -611,7 +611,7 @@ Ecwid.OnAPILoaded.add(function() {
                             const engravingText2 = isSingleStick ? '' : (engravingInput2?.value || '');
 
                             // Calculate new character count
-                            const charCount = engravingText1.length + engravingText2.length;
+                            const charCount = engravingText1.replace(/\s/g, '').length + engravingText2.replace(/\s/g, '').length;
                             
                             // Debug logging
                             console.log('Hiking quantity update:', {

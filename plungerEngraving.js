@@ -230,7 +230,7 @@ Ecwid.OnAPILoaded.add(function() {
                 addListenerOnce('engraving1', engravingInput1, 'input', () => {
                     console.log('Engraving input changed:', engravingInput1.value);
                     const engravingText1 = engravingInput1.value;
-                    const charCount = engravingText1.length;
+                    const charCount = engravingText1.replace(/\s/g, '').length;
                     
                     if (charCount > 40) {
                         engravingInput1.value = engravingInput1.value.slice(0, -1);
